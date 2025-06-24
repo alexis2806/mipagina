@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KosasCherris36</title>
+    <!-- Google Fonts Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        img{
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            color: #333;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .top-bar {
+            background: #f5f5f5;
+            padding: 8px 0;
+            font-size: 12px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 28px;
+            background: #000;
+            color: #fff;
+            padding: 12px 18px;
+            letter-spacing: 1px;
+        }
+
+        .logo .accent {
+            background: #e74c3c;
+            padding: 3px 8px;
+            margin-left: 8px;
+            font-weight: 700;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 25px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .search-cart {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-box {
+            padding: 10px;
+            border: 2px solid #ddd;
+            width: 220px;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 4px;
+        }
+
+        .cart {
+            background: #333;
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .cart:hover {
+            background: #e74c3c;
+        }
+
+        /* Navigation */
+        .nav {
+            background: #fff;
+            border-top: 1px solid #ddd;
+            padding: 18px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(231,76,60,0.3)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23333" width="1200" height="600"/><rect fill="%23222" x="0" y="0" width="600" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .year {
+            font-size: 72px;
+            font-weight: 100;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .availability {
+            font-size: 16px;
+            margin-bottom: 35px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .cta-box {
+            border: 3px solid #fff;
+            padding: 35px;
+            max-width: 450px;
+            margin-bottom: 25px;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-box h3 {
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .cta-button {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 15px 35px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #fff;
+            color: #333;
+            transform: translateY(-2px);
+        }
+
+        .hero-images {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .hero-img {
+            width: 140px;
+            height: 90px;
+            background: #555;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Features */
+        .features {
+            background: #2c2c2c;
+            padding: 50px 0;
+        }
+
+        .features-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+        .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: #e74c3c;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            border-radius: 50%;
+        }
+
+        .feature h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .feature p {
+            font-size: 13px;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        /* Catalog Section */
+        .catalogo {
+            background: #1a1a1a;
+            padding: 60px 0;
+        }
+
+        .catalogo h2 {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .tab-button {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            padding-bottom: 12px;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .tab-button.active {
+            border-bottom-color: #e74c3c;
+            color: #e74c3c;
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .producto {
+            background: #fff;
+            color: #333;
+            text-align: center;
+            transition: all 0.3s;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .producto:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .img-placeholder {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 52px;
+            color: #bbb;
+            font-weight: 300;
+        }
+
+        .producto-info {
+            padding: 25px;
+        }
+
+        .producto h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .producto-price {
+            font-size: 22px;
+            font-weight: 800;
+            color: #e74c3c;
+            margin-bottom: 18px;
+        }
+
+        /* .add-to-cart {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        */
+/* .add-to-cart:hover {
+            background: #e74c3c;
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about {
+            background: #2c2c2c;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .about p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            padding: 50px 0 25px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #e74c3c;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 25px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .search-cart {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .search-box {
+                width: 200px;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                gap: 20px;
+                padding: 20px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                height: auto;
+                padding: 60px 0;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .year {
+                font-size: 56px;
+            }
+
+            .features-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+            .tab-buttons {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+
+            .productos-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+            .productos-grid {
+                grid-template-columns: 1fr;
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+                object-fit: cover;
+            }
+
+
+            .tab-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .year {
+                font-size: 48px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        ENVÍO GRATUITO EN COMPRAS MAYORES A $500 • CONTACTO • AYUDA • TÉRMINOS Y CONDICIONES
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                Kosas Cherris <span class="accent">36</span>
+                            <!-- SECCION DE CUADRO ROJO DESPUES DE KOSAS CHERRIS -->
+            </div>
+            <div class="contact-info">
+                <span>LÍNEA GRATUITA</span>
+                <span><strong>+52 (899) 467 4312</strong></span>
+            </div>
+            <div class="search-cart">
+                <!-- <input type="text" class="search-box" placeholder="Buscar productos..." aria-label="Buscar productos"> -->
+                <!-- <a href="#" class="cart">CARRITO (VACÍO)</a> -->
+            </div>
+            <div class="menu-toggle" id="menu-toggle" aria-label="Menú móvil">&#9776;</div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1></h1>
+                    <h2>COLLECTION</h2>
+                    <div class="year">2025</div>
+                    <p class="availability">MODA ÚNICA, ESTILO AUTÉNTICO</p>
+                    
+                    <div class="cta-box">
+                        <h3>OUTERWEAR</h3>
+                        <h3>NEW ARRIVALS</h3>
+                        <button class="cta-button">VER COLECCIÓN</button>
+                    </div>
+                </div>
+                <div class="hero-images">
+                    <div class="hero-img"></div>
+                    <div class="hero-img"></div>
+                    <div class="hero-img"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container features-container">
+            <div class="feature">
+                <div class="feature-icon"> ✖</div>
+                <h2>NO HACEMOS DEVOLUCIONES</h2>
+                <h4>Las devoluciones por el momento no estan disponibles.</h4>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎁</div>
+                <h2>OFERTAS</h2>
+                <h4>"La cherry del día 🍒 ¡Oferta exprés en Instagram!"</h4>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🚚</div>
+                <h2>ENTREGAS EN REYNOSA</h2>
+                <h4>
+                    <li>Plaza periferico</li>
+                    <li>Plaza real</li>
+                    <li>Vista Hermosa</li>
+                    <li>Tecnologico</li></h4>
+            </div>
+            <!--
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>COMPRA ONLINE</h3>
+                <p>Disponible 24/7</p>
+            </div>
+            -->
+        </div>
+    </section>
+
+    <!--CATALOGO!!!
+    <section id="catalogo" class="catalogo" aria-label="Catálogo de productos">
+        <div class="container">
+            <h2>Catálogo</h2>
+            
+            <div class="tab-buttons">
+    <button class="tab-button active" data-filter="all">Todos</button>
+    <button class="tab-button" data-filter="playera">Playeras</button>
+    <button class="tab-button" data-filter="camisa">Camisas</button>
+    <button class="tab-button" data-filter="chaqueta">Chaquetas</button>
+    <button class="tab-button" data-filter="sueter">Suéteres</button>
+    <button class="tab-button" data-filter="short">Shorts</button>
+    <button class="tab-button" data-filter="pantalon">Pantalones</button>
+    <button class="tab-button" data-filter="cinto">Cintos</button>
+</div>
+-->
+                <!--
+                <button class="tab-button">NUEVOS</button>
+                -->
+                <!--
+                <button class="tab-button">OFERTAS</button>
+            --> 
+            </div>
+
+            
+<div class="filtro-container" style="text-align:center; margin-bottom: 40px;">
+    <label for="filtro-categoria" style="font-size:18px; font-weight:600;">Filtrar por categoría:</label>
+    <select id="filtro-categoria" style="margin-left: 15px; padding: 10px; border-radius: 8px; font-size: 16px;">
+        <option value="all">Todos</option>
+        <option value="playera">Playeras</option>
+        <option value="camisa">Camisas</option>
+        <!--
+        <option value="chaqueta">Chaquetas</option>
+    -->
+        <option value="sueter">Suéteres</option>
+        <option value="short">Shorts</option>
+        <!--
+        <option value="pantalon">Pantalones</option>
+    -->
+        <option value="cinto">Cintos</option>
+        <option value="hoodie">Hoodies</option>
+    </select>
+</div>
+
+<div class="productos-grid">
+                <article class="producto playera" tabindex="0">
+                    <img src="imagenes html/playera1.png" alt="Chaqueta Denim Vintage" class="producto-img" />
+                    <div class="producto-info">
+                        <h3>Playera TieDye chuleta Talla M</h3>
+                        <div class="producto-price">$60.00</div>
+                        <!-- <button class="add-to-cart">AGREGAR AL CARRITO</button> -->
+                    </div>
+                </article>
+
+                <article class="producto playera" tabindex="0">
+                    <img src="imagenes html/playera2.png" alt="Chaqueta Denim Vintage" class="producto-img" />
+                    <div class="producto-info">
+                        <h3>Playera F18 Talla L</h3>
+                        <div class="producto-price">$60.00</div>
+                        <!-- <button class="add-to-cart">AGREGAR AL CARRITO</button> -->
+                    </div>
+                </article>
+
+                <article class="producto hoodie" tabindex="0">
+                    <img src="imagenes html/playera3.png" alt="Chaqueta Denim Vintage" class="producto-img" />
+                    <div class="producto-info">
+                        <h3>Playera  Talla S</h3>
+                        <div class="producto-price">$60.00</div>
+                        <!-- <button class="add-to-cart">AGREGAR AL CARRITO</button> -->
+                    </div>
+                </article>
+
+                <article class="producto playera" tabindex="0">
+                    <img src="imagenes html/playera4.png" alt="Chaqueta Denim Vintage" class="producto-img" />
+                    <div class="producto-info">
+                        <h3>Playera Polo, Scott Jame Talla XL</h3>
+                        <div class="producto-price">$180.00</div>
+                        <!-- <button class="add-to-cart">AGREGAR AL CARRITO</button> -->
+                    </div>
+                </article>
+
+                <article class="producto cinto" tabindex="0">
+                    <img src="imagenes html/playera5.png" alt="Chaqueta Denim Vintage" class="producto-img" />
+                    <div class="producto-info">
+                        <h3>Cinto y2k 95cm de largo</h3>
+                        <div class="producto-price">$120.00</div>
+                        <!-- <button class="add-to-cart">AGREGAR AL CARRITO</button> -->
+                    </div>
+                </article>
+
+                <article class="producto short" tabindex="0">
+                    <img src="imagenes html/short1.png"      alt="Chaqueta Denim Vintage" class="producto-img" />
+                    <div class="producto-info">
+                        <h3>Short bien coqueto Talla L </h3>
+                        <div class="producto-price">$110.00</div>
+                        <!-- <button class="add-to-cart">AGREGAR AL CARRITO</button> -->
+                    </div>
+                </article>
+
+                <article class="producto camisa" tabindex="0">
+                    <img src="imagenes html/playera6.png"      alt="Chaqueta Denim Vintage" class="producto-img" />
+                    <div class="producto-info">
+                        <h3>Camisa y2k Talla M</h3>
+                        <div class="producto-price">$140.00</div>
+                        <!-- <button class="add-to-cart">AGREGAR AL CARRITO</button> -->
+                    </div>
+                </article>
+
+                <article class="producto hoodie" tabindex="0">
+                    <img src="imagenes html/playera7.png"      alt="Chaqueta Denim Vintage" class="producto-img" />
+                    <div class="producto-info">
+                        <h3>Chaqueta DOBLE VISTA TALLA S-M</h3>
+                        <div class="producto-price">$300.00</div>
+                        <!-- <button class="add-to-cart">AGREGAR AL CARRITO</button> -->
+                    </div>
+                </article>
+
+                <article class="producto sueter" tabindex="0">
+                    <img src="imagenes html/playera8.png"      alt="Chaqueta Denim Vintage" class="producto-img" />
+                    <div class="producto-info">
+                        <h3>Sueter cherri de los vikingos de Minnesota, estilo oversize Talla M</h3>
+                        <div class="producto-price">$150.00</div>
+                        <!-- <button class="add-to-cart">AGREGAR AL CARRITO</button> -->
+                    </div>
+                </article>
+
+                <article class="producto sueter" tabindex="0">
+                    <img src="imagenes html/playera9.png"      alt="Chaqueta Denim Vintage" class="producto-img" />
+                    <div class="producto-info">
+                        <h3>Sueter Antisocial TALLA L</h3>
+                        <div class="producto-price">$130.00</div>
+                        <!-- <button class="add-to-cart">AGREGAR AL CARRITO</button> -->
+                    </div>
+                </article>
+                
+                <article class="producto hoodie" tabindex="0">
+                    <img src="imagenes html/playera10.png"      alt="Chaqueta Denim Vintage" class="producto-img" />
+                    <div class="producto-info">
+                        <h3>Chaqueta Varcity Cuidao con el puppy Talla XS-S</h3>
+                        <div class="producto-price">$170.00</div>
+                        <!-- <button class="add-to-cart">AGREGAR AL CARRITO</button> -->
+                    </div>
+                </article>
+
+                <article class="producto hoodie" tabindex="0">
+                    <img src="imagenes html/playera11.png"      alt="Chaqueta Denim Vintage" class="producto-img" />
+                    <div class="producto-info">
+                        <h3>Sueter Lil peep Talla XL-XXL</h3>
+                        <div class="producto-price">$250.00</div>
+                        <!-- <button class="add-to-cart">AGREGAR AL CARRITO</button> -->
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about" aria-label="Acerca de nosotros">
+        <div class="container">
+            <h2>Nosotros</h2>
+            <p>Somos Kosas Cherris, un emprendimiento dedicado a ofrecer prendas de segunda mano con estilo único y precios accesibles. Nuestra misión es que cada persona encuentre su propio estilo sostenible, contribuyendo al cuidado del medio ambiente mientras luce increíble. Cada prenda tiene una historia, y nosotros te ayudamos a escribir la tuya.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto" class="footer" aria-label="Información de contacto">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>SÍGUENOS</h3>
+                    <ul>
+                        <br>
+                        <li><a href="https://www.instagram.com/kosascherris36/" aria-label="Instagram">Instagram</a></li>
+                        <!--
+                        <li><a href="#" aria-label="Facebook">Facebook</a></li>
+                        <li><a href="#" aria-label="Twitter">Twitter</a></li>
+                        <li><a href="#" aria-label="TikTok">TikTok</a></li>
+                    -->
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>ENVÍO GRATUITO</h3>
+                    <br>
+                    <p>El envio es gratuito en en los puntos de entrega a partir de $100 de compras.</p>
+                    <br>
+
+                    <h3 style="margin-top: 20px;">SOPORTE ONLINE</h3>
+                    <br>
+                    <p>Nuestro equipo de atención al cliente está disponible durante el día.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>DINAMICA DE COMPRA</h3>
+                    <br>
+                    <p>Si te interesa alguna prenda no dudes en contactarnos a el número de teléfono mostrado en la parte superior o también en nuestro perfil de instagram.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>CATEGORÍAS</h3>
+                    <ul>
+                        <p>Camisas</p>
+                        <br>
+                        <p>Pantalones</p>
+                        <br>
+                        <p>Accesorios</p>
+                        <br>
+                        <p>Chaquetas</p>
+                        <br>
+                        
+                        <!--
+                        <li><a href="#">Camisas</a></li>
+                        <li><a href="#">Pantalones</a></li>
+                        <li><a href="#">Chaquetas</a></li>
+                        <li><a href="#">Accesorios</a></li>
+                        <li><a href="#">Calzado</a></li>
+                        -->
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Contacto: <a  href="mailto:vieralunaaldair@gmail.com">info@kosascherris.com</a> | Tel: <a href="tel:+8994674312">+52 (899) 467 4312</a></p>
+                <p>&copy; 2025 Kosas Cherris. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Producto hover
+    const productos = document.querySelectorAll('.producto');
+    productos.forEach(producto => {
+        producto.addEventListener('mouseenter', () => {
+            producto.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        producto.addEventListener('mouseleave', () => {
+            producto.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+
+    // Filtro con menú desplegable funcional
+    const filtro = document.getElementById('filtro-categoria');
+
+    filtro.addEventListener('change', () => {
+        const valor = filtro.value;
+        productos.forEach(p => {
+            if (valor === 'all' || p.classList.contains(valor)) {
+                p.style.display = 'block';
+            } else {
+                p.style.display = 'none';
+            }
+        });
+    });
+
+
+    // Cerrar menú móvil al dar clic
+    navLinks.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            navLinks.classList.remove('active');
+        }
+    });
+</script>
+</body>
+</html>
+
